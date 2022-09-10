@@ -69,11 +69,11 @@ public class chess {
 	}
 	
 	public boolean checkupward(int r, int c) {
-		return r!=4;
+		return r!=0;
 	}
 	
 	public boolean checkdown(int r, int c) {
-		return r!=0;
+		return r!=4;
 	}
 	
 	public boolean checkleft(int r, int c) {
@@ -83,6 +83,23 @@ public class chess {
 	public boolean checkright(int r, int c) {
 		return c!=4;
 	}
+	
+	public boolean checkupward2(int r, int c) {
+		return r!=4;
+	}
+	
+	public boolean checkdown2(int r, int c) {
+		return r!=0;
+	}
+	
+	public boolean checkleft2(int r, int c) {
+		return c!=4;
+	}
+	
+	public boolean checkright2(int r, int c) {
+		return c!=0;
+	}
+	
 	
 	public static void main(String args[]) {
 		Scanner S = new Scanner(System.in);
@@ -146,7 +163,7 @@ public class chess {
 					}*/
 					move = input.split(":");
 				}
-				else {//PIECE FOUND
+				else {//PIECE FOUND A
 					boolean cond1 = false;
 					int foundROW = 0, foundCOL = 0;
 					for(row = 4;row>=0;--row) {
@@ -165,20 +182,6 @@ public class chess {
 						if(!object.checkupward(row, col)) {
 							temp = board[foundROW][foundCOL];
 							board[foundROW][foundCOL] = "";
-							if(!board[foundROW+1][foundCOL].equals("")) {
-								temp2 = board[foundROW+1][foundCOL];
-								total_B--;
-								presentstatesB.remove(String.valueOf(temp2));
-							}
-							else {
-								board[foundROW+1][foundCOL] = temp;
-							}
-						}
-					}
-					else if(move[1].equals("B")) {
-						if(!object.checkdown(row, col)) {
-							temp = board[foundROW][foundCOL];
-							board[foundROW][foundCOL] = "";
 							if(!board[foundROW-1][foundCOL].equals("")) {
 								temp2 = board[foundROW-1][foundCOL];
 								total_B--;
@@ -186,6 +189,20 @@ public class chess {
 							}
 							else {
 								board[foundROW-1][foundCOL] = temp;
+							}
+						}
+					}
+					else if(move[1].equals("B")) {
+						if(!object.checkdown(row, col)) {
+							temp = board[foundROW][foundCOL];
+							board[foundROW][foundCOL] = "";
+							if(!board[foundROW+1][foundCOL].equals("")) {
+								temp2 = board[foundROW+1][foundCOL];
+								total_B--;
+								presentstatesB.remove(String.valueOf(temp2));
+							}
+							else {
+								board[foundROW+1][foundCOL] = temp;
 							}
 						}
 					}
@@ -221,7 +238,7 @@ public class chess {
 				}
 				object.printState();
 			}
-			else {
+			else {//for B
 				if(!presentstatesB.contains(move[0])) {//WHEN THAT PIECE IS ELIMINATED
 					while(!object.checkinput(input)) {
 						System.out.println("Invalid input 2");
@@ -229,7 +246,7 @@ public class chess {
 					}
 					move = input.split(":");
 				}
-				else {//PIECE FOUND
+				else {//PIECE FOUND B
 					boolean cond2 = false;
 					int foundROW1 = 0, foundCOL1 = 0;
 					for(row = 0;row<5;++row) {
@@ -245,7 +262,7 @@ public class chess {
 					}
 					String temp="",temp2="";
 					if(move[1].equals("F")) {
-						if(!object.checkupward(row, col)) {
+						if(!object.checkupward2(row, col)) {
 							temp = board[foundROW1][foundCOL1];
 							board[foundROW1][foundCOL1] = "";
 							if(!board[foundROW1+1][foundCOL1].equals("")) {
@@ -259,7 +276,7 @@ public class chess {
 						}
 					}
 					else if(move[1].equals("B")) {
-						if(!object.checkdown(row, col)) {
+						if(!object.checkdown2(row, col)) {
 							temp = board[foundROW1][foundCOL1];
 							board[foundROW1][foundCOL1] = "";
 							if(!board[foundROW1-1][foundCOL1].equals("")) {
@@ -273,21 +290,7 @@ public class chess {
 						}
 					}
 					else if(move[1].equals("L")) {
-						if(!object.checkleft(row, col)) {
-							temp = board[foundROW1][foundCOL1];
-							board[foundROW1][foundCOL1] = "";
-							if(!board[foundROW1][foundCOL1-1].equals("")) {
-								temp2 = board[foundROW1][foundCOL1-1];
-								total_B--;
-								presentstatesB.remove(String.valueOf(temp2));
-							}
-							else {
-								board[foundROW1][foundCOL1-1] = temp;
-							}
-						}
-					}
-					else if(move[1].equals("R")) {
-						if(!object.checkright(row, col)) {
+						if(!object.checkleft2(row, col)) {
 							temp = board[foundROW1][foundCOL1];
 							board[foundROW1][foundCOL1] = "";
 							if(!board[foundROW1][foundCOL1+1].equals("")) {
@@ -297,6 +300,20 @@ public class chess {
 							}
 							else {
 								board[foundROW1][foundCOL1+1] = temp;
+							}
+						}
+					}
+					else if(move[1].equals("R")) {
+						if(!object.checkright2(row, col)) {
+							temp = board[foundROW1][foundCOL1];
+							board[foundROW1][foundCOL1] = "";
+							if(!board[foundROW1][foundCOL1+1].equals("")) {
+								temp2 = board[foundROW1][foundCOL1-1];
+								total_B--;
+								presentstatesB.remove(String.valueOf(temp2));
+							}
+							else {
+								board[foundROW1][foundCOL1-1] = temp;
 							}
 						}
 					}
@@ -319,3 +336,4 @@ public class chess {
 		
 	}
 }
+//P1 P2 P3 P4 P5
