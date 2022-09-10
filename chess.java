@@ -246,59 +246,60 @@ public class chess {
 					String temp="",temp2="";
 					if(move[1].equals("F")) {
 						if(!object.checkupward(row, col)) {
-							temp = board[foundROW][foundCOL];
-							board[foundROW][foundCOL] = "";
-							if(!board[foundROW+1][foundCOL].equals("")) {
-								temp2 = board[foundROW+1][foundCOL];
+							temp = board[foundROW1][foundCOL1];
+							board[foundROW1][foundCOL1] = "";
+							if(!board[foundROW1+1][foundCOL1].equals("")) {
+								temp2 = board[foundROW1+1][foundCOL1];
 								total_B--;
 								presentstatesB.remove(String.valueOf(temp2));
 							}
 							else {
-								board[foundROW+1][foundCOL] = temp;
+								board[foundROW1+1][foundCOL1] = temp;
 							}
 						}
 					}
 					else if(move[1].equals("B")) {
 						if(!object.checkdown(row, col)) {
-							temp = board[foundROW][foundCOL];
-							board[foundROW][foundCOL] = "";
-							if(!board[foundROW-1][foundCOL].equals("")) {
-								temp2 = board[foundROW-1][foundCOL];
+							temp = board[foundROW1][foundCOL1];
+							board[foundROW1][foundCOL1] = "";
+							if(!board[foundROW1-1][foundCOL1].equals("")) {
+								temp2 = board[foundROW1-1][foundCOL1];
 								total_B--;
 								presentstatesB.remove(String.valueOf(temp2));
 							}
 							else {
-								board[foundROW-1][foundCOL] = temp;
+								board[foundROW1-1][foundCOL1] = temp;
 							}
 						}
 					}
 					else if(move[1].equals("L")) {
 						if(!object.checkleft(row, col)) {
-							temp = board[foundROW][foundCOL];
-							board[foundROW][foundCOL] = "";
-							if(!board[foundROW][foundCOL-1].equals("")) {
-								temp2 = board[foundROW][foundCOL-1];
+							temp = board[foundROW1][foundCOL1];
+							board[foundROW1][foundCOL1] = "";
+							if(!board[foundROW1][foundCOL1-1].equals("")) {
+								temp2 = board[foundROW1][foundCOL1-1];
 								total_B--;
 								presentstatesB.remove(String.valueOf(temp2));
 							}
 							else {
-								board[foundROW][foundCOL-1] = temp;
+								board[foundROW1][foundCOL1-1] = temp;
 							}
 						}
 					}
 					else if(move[1].equals("R")) {
 						if(!object.checkright(row, col)) {
-							temp = board[foundROW][foundCOL];
-							board[foundROW][foundCOL] = "";
-							if(!board[foundROW][foundCOL+1].equals("")) {
-								temp2 = board[foundROW][foundCOL+1];
+							temp = board[foundROW1][foundCOL1];
+							board[foundROW1][foundCOL1] = "";
+							if(!board[foundROW1][foundCOL1+1].equals("")) {
+								temp2 = board[foundROW1][foundCOL1+1];
 								total_B--;
 								presentstatesB.remove(String.valueOf(temp2));
 							}
 							else {
-								board[foundROW][foundCOL+1] = temp;
+								board[foundROW1][foundCOL1+1] = temp;
 							}
 						}
+					}
 
 				}
 				object.printState();
